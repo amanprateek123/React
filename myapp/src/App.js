@@ -27,11 +27,19 @@ this.setState({
   })
  }
   render() {
+const style = {
+padding: '8px',
+backgroundColor: 'white',
+border: '1px solid blue',
+cursor: 'pointer'
+}
+
+
     return (
       <div className="App">
         <h1>Hi, I am React App!</h1>
         <p>It is working!!</p>
-        <button onClick={() => this.switchHandler()}>Switch Name</button>
+        <button style={style} onClick={() => this.switchHandler()}>Switch Name</button>
         <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchHandler} changed={this.changeHandler}>My Hobbies:Coding</Person>
         <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
       </div>

@@ -7,7 +7,8 @@ class App extends Component {
    persons: [
      {name:"Aman", age:19},
      {name:"Vatan",age:18}
-   ]
+   ],
+   showPerson:false
  }
  switchHandler = () => {
 this.setState({
@@ -26,6 +27,11 @@ this.setState({
     ]
   })
  }
+
+ toggleHandler = () => {
+   const doesShow = this.state.showPerson;
+   this.setState({showPerson: !doesShow});
+ }
   render() {
 const style = {
 padding: '8px',
@@ -39,9 +45,14 @@ cursor: 'pointer'
       <div className="App">
         <h1>Hi, I am React App!</h1>
         <p>It is working!!</p>
-        <button style={style} onClick={() => this.switchHandler()}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchHandler} changed={this.changeHandler}>My Hobbies:Coding</Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
+        <button style={style} onClick={this.toggleHandler}>Toggle Person</button>
+        {
+          this.state.showPerson === true ?
+          <div>
+          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchHandler} changed={this.changeHandler}>My Hobbies:Coding</Person>
+          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
+          </div> : null
+        }
       </div>
     );
   }

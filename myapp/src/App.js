@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import person from './Person/Person';
 
 class App extends Component {
  state = {
@@ -43,8 +44,10 @@ cursor: 'pointer'
   if(this.state.showPerson===true)
   {
     persons=( <div>
-          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchHandler} changed={this.changeHandler}>My Hobbies:Coding</Person>
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
+         {this.state.persons.map(person => {
+           return <Person
+            name={person.name} age={person.age}/>
+         })}
     </div> )
   }
    

@@ -39,20 +39,21 @@ backgroundColor: 'white',
 border: '1px solid blue',
 cursor: 'pointer'
 }
-
-
+  let persons = null;
+  if(this.state.showPerson===true)
+  {
+    persons=( <div>
+          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchHandler} changed={this.changeHandler}>My Hobbies:Coding</Person>
+          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
+    </div> )
+  }
+   
     return (
       <div className="App">
         <h1>Hi, I am React App!</h1>
         <p>It is working!!</p>
         <button style={style} onClick={this.toggleHandler}>Toggle Person</button>
-        {
-          this.state.showPerson === true ?
-          <div>
-          <Person name={this.state.persons[0].name} age={this.state.persons[0].age} click={this.switchHandler} changed={this.changeHandler}>My Hobbies:Coding</Person>
-          <Person name={this.state.persons[1].name} age={this.state.persons[1].age} />
-          </div> : null
-        }
+        {persons}
       </div>
     );
   }

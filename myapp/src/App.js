@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
 import person from './Person/Person';
+import Radium from 'radium';
 
 class App extends Component {
  state = {
@@ -44,7 +45,11 @@ padding: '8px',
 backgroundColor: 'blue',
 color:'white',
 border: '1px solid blue',
-cursor: 'pointer'
+cursor: 'pointer',
+":hover": {
+  backgroundColor: 'lightBlue',
+  color: 'green'
+}
 }
   let persons = null;
   if(this.state.showPerson===true)
@@ -58,6 +63,10 @@ cursor: 'pointer'
          })}
     </div> )
     style.backgroundColor='red';
+    style[":hover"]= {
+      backgroundColor: 'salmon',
+      color: 'blue'
+    }
   }
    const classes = [];
    if(this.state.persons.length<=2){
@@ -77,4 +86,4 @@ cursor: 'pointer'
   }
 }
 
-export default App;
+export default Radium(App);

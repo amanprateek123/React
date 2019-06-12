@@ -7,7 +7,8 @@ class App extends Component {
  state = {
    persons: [
      {id:1, name:"Aman", age:19},
-     {id:2, name:"Vatan",age:18}
+     {id:2, name:"Vatan",age:18},
+     {id:3, name:"Chotu",age:16}
    ],
    showPerson:false
  }
@@ -40,7 +41,8 @@ persons[personIndex]=person;
   render() {
 const style = {
 padding: '8px',
-backgroundColor: 'white',
+backgroundColor: 'blue',
+color:'white',
 border: '1px solid blue',
 cursor: 'pointer'
 }
@@ -55,12 +57,19 @@ cursor: 'pointer'
             changed={(event) => this.changeHandler(event,person.id)}/>
          })}
     </div> )
+    style.backgroundColor='red';
   }
-   
+   const classes = [];
+   if(this.state.persons.length<=2){
+     classes.push('red');
+   }
+   if(this.state.persons.length<=1) {
+     classes.push('bold');
+   }
     return (
       <div className="App">
         <h1>Hi, I am React App!</h1>
-        <p>It is working!!</p>
+        <p className={classes.join(' ')}>It is working!!</p>
         <button style={style} onClick={this.toggleHandler}>Toggle Person</button>
         {persons}
       </div>
